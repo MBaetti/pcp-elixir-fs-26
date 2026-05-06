@@ -27,7 +27,7 @@ erl -version
 iex.bat -S mix
 ```
 
-## Hilfe
+### Hilfe
 
 ```elixir
 h()
@@ -39,7 +39,7 @@ h()
 mix new . --app pcp_elixir_source_code
 ```
 
-## Elixir Projektstruktur
+### Elixir Projektstruktur
 
 *_build:* Kompilierter Code (Build-Artefakte).
 
@@ -53,7 +53,7 @@ mix new . --app pcp_elixir_source_code
 
 *mix.exs:* Projektkonfiguration und externe Abhängigkeiten.
 
-## Abhängigkeiten definieren
+### Abhängigkeiten definieren
 
 In der `mix.exs`-Datei die benötigten Abhängigkeiten hinzufügen. Zum Beispiel:
 
@@ -68,19 +68,47 @@ def deps do
 end
 ```
 
-## Abhängigkeiten installieren
+### Abhängigkeiten installieren
 
 ```bash
 mix deps.get
 ```
 
-## Projekt kompilieren
+### Projekt kompilieren
 
 ```bash
 mix compile
 ```
 
 Danach befindet sich die kompilierte Version des Projekts im Ordner `_build`.
+
+## Dateientypen
+
+### EX-Dateien
+
+*.ex:* Elixir-Quelldatei, die kompiliert werden kann.
+
+Kompilieren:
+
+```bash
+mix compile
+```
+
+Danach kann die interaktive Shell mit den kompilierten Modulen gestartet werden:
+
+```bash
+iex.bat -S mix
+```
+
+### EXS-Dateien
+
+*.exs:* Elixir-Skriptdatei, die nicht kompiliert wird und direkt ausgeführt werden kann.
+
+Ausführen:
+
+```bash
+elixir script.exs
+```
 
 ## Dokumentation
 

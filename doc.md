@@ -29,7 +29,9 @@
 
 Nebenläufigkeit wird durch isolierte Prozesse umgesetzt. Diese teilen sich keinen Arbeitsspeicher, sondern kommunizieren ausschliesslich über den asynchronen Austausch von Nachrichten.
 
-[Link](https://elixirschool.com/de/lessons/intermediate/concurrency)
+[*Quellcode*](lib/concurrency.exs)
+
+[Elexirscool](https://elixirschool.com/de/lessons/intermediate/concurrency)
 
 ### Comprehensions
 
@@ -37,7 +39,9 @@ Nebenläufigkeit wird durch isolierte Prozesse umgesetzt. Diese teilen sich kein
 
 Ein Konstrukt zur kompakten Iteration, Filterung und Transformation von Aufzählungen. Das Ergebnis der Transformation wird dabei direkt in eine definierte Zieldatenstruktur überführt.
 
-[Link](https://elixirschool.com/de/lessons/basics/comprehensions)
+[*Quellcode*](lib/comprehensions.exs)
+
+[Elexirscool](https://elixirschool.com/de/lessons/basics/comprehensions)
 
 ### Metaprogramming: Macros and Quotes
 
@@ -45,7 +49,9 @@ Ein Konstrukt zur kompakten Iteration, Filterung und Transformation von Aufzähl
 
 Mechanismen der Metaprogrammierung. Quellcode wird in seinen abstrakten Syntaxbaum umgewandelt und kann so zur Kompilierzeit programmatisch modifiziert oder zur Spracherweiterung genutzt werden.
 
-[Link](https://elixirschool.com/de/lessons/advanced/metaprogramming)
+[*Quellcode*](lib/metaprogramming.exs)
+
+[Elexirscool](https://elixirschool.com/de/lessons/advanced/metaprogramming)
 
 ### OPT Supervisors
 
@@ -53,4 +59,6 @@ Mechanismen der Metaprogrammierung. Quellcode wird in seinen abstrakten Syntaxba
 
 Ein Konzept zur Fehlerbehandlung, bei dem fehlerhafte Prozesse umgehend beendet werden. Übergeordnete Überwachungsprozesse registrieren den Ausfall und starten den betroffenen Prozess automatisch in einem definierten Ausgangszustand neu.
 
-[Link](https://elixirschool.com/de/lessons/advanced/otp_supervisors)
+[*Quellcode*](lib/supervisors.exs)
+
+[Elexirscool](https://elixirschool.com/de/lessons/advanced/otp_supervisors)
