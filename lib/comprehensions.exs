@@ -1,4 +1,5 @@
 # Comprehensions
 # Skript ausführen: elixir comprehensions.exs
+# Interaktive Shell starten: iex.bat -S mix
 
-IO.puts("Hallo aus dem Elixir-Skript!")
+quote do: 1 + 2
