@@ -116,6 +116,8 @@ elixir script.exs
 
 ## Nützliche Ressourcen
 
+[Elixir offizielle Dokumentation](https://hexdocs.pm/elixir/1.19.5/Kernel.html)
+
 [Elixir Scool](https://elixirschool.com/de/)
 
 [Fireship: Elixir in 100 Seconds](https://www.youtube.com/watch?v=R7t7zca8SyM)
