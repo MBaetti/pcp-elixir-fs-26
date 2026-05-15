@@ -19,17 +19,10 @@ quote do: 1 + 2
 #  [1, 2]
 # }
 
-quote do: if(value, do: "True", else: "False")
-# {
-#  :if,
-#  [context: Elixir, imports: [{2, Kernel}]],
-#  [{:value, [], Elixir}, [do: "True", else: "False"]]
-# }
-
 # - Unquote -
 # unquote ermöglicht es, Werte in einen quote-Ausdruck einzufügen, damit sie zur Kompilierzeit ausgewertet werden können
 
-value = 42
+value = 2
 
 quote do: 1 + value
 # {
@@ -42,9 +35,9 @@ quote do: 1 + unquote(value)
 # {
 #  :+,
 #  [context: Elixir, imports: [{1, Kernel}, {2, Kernel}]],
-#  [1, 42]
+#  [1, 2]
 # }
-# 42 wird in den quote-Ausdruck eingefügt und zur Kompilierzeit ausgewertet
+# 2 wird in den quote-Ausdruck eingefügt und zur Kompilierzeit ausgewertet
 
 # -- Makros --
 defmodule OurMacro do
