@@ -62,3 +62,11 @@ Ein Konzept zur Fehlerbehandlung, bei dem fehlerhafte Prozesse umgehend beendet 
 [*Quellcode*](lib/supervisors.exs)
 
 [Elexirscool](https://elixirschool.com/de/lessons/advanced/otp_supervisors)
+
+## Reihenfolge Präsentation
+
+1. Interesting Facts
+2. Comprehensions
+3. Concurrency: The Actor Model
+4. Supervisors
+5. Metaprogramming: Macros and Quotes
