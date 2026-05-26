@@ -59,7 +59,7 @@ Mechanismen der Metaprogrammierung. Quellcode wird in seinen abstrakten Syntaxba
 
 Ein Konzept zur Fehlerbehandlung, bei dem fehlerhafte Prozesse umgehend beendet werden. Übergeordnete Überwachungsprozesse registrieren den Ausfall und starten den betroffenen Prozess automatisch in einem definierten Ausgangszustand neu.
 
-[*Quellcode*](lib/supervisors.exs)
+[*Quellcode*](lib/supervisors.ex)
 
 [Elexirscool](https://elixirschool.com/de/lessons/advanced/otp_supervisors)
 
