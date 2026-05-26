@@ -37,6 +37,7 @@ IO.puts(String.trim(stringResult3))
 numbers = [1, 2, 2, 3, 3]
 
 numberResult = for x <- numbers, into: MapSet.new(), do: x
+IO.inspect(numberResult)
 for x <- numberResult do
   IO.puts(x)
 end
