@@ -39,7 +39,7 @@ quote do: 1 + unquote(value)
 # }
 # 2 wird in den quote-Ausdruck eingefügt und zur Kompilierzeit ausgewertet
 
-# -- Makros --
+# - Makros -
 defmodule OurMacro do
   defmacro unless(expr, do: block) do
     quote do
