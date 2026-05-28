@@ -2,7 +2,8 @@
 
 - **Autoren:** Maurice Bättig & Mathias Vogel 
 - **Modul:** PCP – Programmierkonzepte und Paradigmen  
-- **Datum:** Mai 2026  
+- **Datum:** Mai 2026
+- **GitHub-Repo:** https://github.com/MBaetti/pcp-elixir-fs-26.git
 
 ## 1. Was ist Elixir?
 
@@ -92,7 +93,7 @@ send(pid, {:hello, "World"})
 
 ### 3.3 OTP Supervisors
 
-- **Quellcode-Referenz:** lib/supervisors.ex, mit Beispiel basierend auf der 3. Aufgabe aus Modern Java in SW 11.
+- **Quellcode-Referenz:** lib/supervisors.ex, Beispiel anhand des Demo-Codes SW11 Modern Java: 3. Aufgabe
 
 Ein Kernkonzept zur Fehlerbehandlung nach der «Let it crash»-Philosophie. Anstatt Fehler defensiv abzufangen, lässt man fehlerhafte Prozesse sofort abstürzen. Ein übergeordneter Überwachungsprozess (Supervisor) registriert diesen Ausfall und startet den betroffenen Worker automatisch in einem sauberen Ausgangszustand neu. Im Gegensatz zu Java, wo eine Exception in einem Thread die gesamte Applikation zum Abstürzen bringen kann, bleiben Elixir-Systeme dadurch dauerhaft stabil.
 
@@ -122,22 +123,22 @@ Macros kombinieren diese Konstrukte und werden vor allem eingesetzt für:
 
 ## 4. Technisches Team-Fazit
 
-\+ Concurrency ohne Locks – eleganter als Java Threads </br>
-\+ Pipe-Operator und Comprehensions → sehr lesbarer Code</br>
-\+ «Let it crash» ist ein radikaler aber effektiver Paradigmenwechsel
+\+ Effizient, da basierend auf der Erlang VM </br>
+\+ Concurrency ohne Locks und damit eleganter als Java Threads </br>
+\+ Pipe-Operator und Comprehensions füren zu sehr lesbarem Code </br>
+\+ «Let it crash» als effektiver Paradigmenwechsel
 
-\- Steile Lernkurve (funktional + OTP-Konzepte) </br>
-\- Dynamische Typen – kein Compile-Time Type Safety </br>
-\- Kleineres Ökosystem als Java
+\- Dynamische Typen, also keine Compile-Time Type Safety </br>
+\- Kleineres Ökosystem als Java </br>
+\- Komplexes Supervisor-Konzept mit erhöhtem Konfigurationsaufwand
 
 ## 5. Persönliches Fazit
 
 ### 5.1 Maurice Bättig
 
+Obwohl Elixir viele spannende Konzepte bietet, erweist sich der Einstieg im direkten Vergleich zu Clojure als etwas mühsam. Bereits das initiale Aufsetzen eines Projekts ist durch die zwingend benötigten Komponenten wie Erlang, Elixir und entsprechende VS Code-Plugins eher aufwändig. Auch das Ausführen von Code gestaltet sich in der Praxis weniger simpel und direkt, selbst unter Berücksichtigung der spezifischen Datei-Endungen (.ex für kompilierte und .exs für Skript-Dateien). 
 
-
-- Ausführen von Code nicht so simple wie bei Clojure
-- Supervisor als cooles Feature, jedoch komplex und mit viel Konfigurationsaufwand
+Ein echtes Highlight der Sprache ist zweifellos das «Let it crash»-Konzept, allerdings geht dieses mächtige Werkzeug mit einer hohen Komplexität und einem nicht zu unterschätzenden Konfigurationsaufwand einher.
 
 ### 5.2 Mathias Vogel
 
