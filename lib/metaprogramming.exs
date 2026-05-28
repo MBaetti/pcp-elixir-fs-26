@@ -3,6 +3,32 @@
 # Interaktive Shell starten: iex.bat -S mix
 # File in die Shell laden: import_file("./lib/metaprogramming.exs")
 
+# - Praesentation -
+
+# -- Quote --
+valueP1 = 2
+quote do: 1 + valueP1
+
+# -- Unquote ----
+valueP2 = 2
+quote do: 1 + unquote(valueP2)
+
+# -- Makros --
+defmodule MyMacroP do
+  defmacro ifTrue(expr, do: sehrAufwaendig) do
+    quote do
+      if unquote(expr), do: unquote(sehrAufwaendig)
+    end
+  end
+end
+
+require MyMacroP
+
+MyMacroP.ifTrue(true, do: "Hi")
+MyMacroP.ifTrue(false, do: "Hi")
+
+###################################################################################################
+
 # - Quote -
 # quote gibt abstract syntax tree zurück, also die Struktur des Codes, ohne ihn auszuführen
 # Das zurückgegebene Tuple besteht aus:
@@ -46,8 +72,6 @@ MyMacro.ifTrue(false, do: "Hi")
 # Die if-Abfrage ist ebenfalls als Makro umgesetzt
 # Mit Macro.expand den erzeugten Code dazu anzeigen lassen
 # quote(do: if(true, do: "Hi")) |> Macro.expand(__ENV__) |> Macro.to_string() |> IO.puts()
-
-###################################################################################################
 
 # - Hygiene -
 # Hygienische Variablen kolidieren nicht mit Variablen im Kontext, in dem das Makro aufgerufen wird.

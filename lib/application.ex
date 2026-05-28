@@ -9,7 +9,8 @@ defmodule PcpElixir.Application do
     # Sub-Prozesse registrieren, welche überwacht werden sollen
     children = [
       # Initialzustand [] definieren
-      {PcpElixir.Supervisor, []}
+      {PcpElixir.Supervisor, []},
+      {PcpElixir.APISupervisor, []}
     ]
 
     # Root-Supervisor und definierte Sub-Prozesse darunter starten
