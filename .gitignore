@@ -24,3 +24,6 @@ pcp-elixir-fs-26-*.tar
 
 # Ignore Elixir Language Server artifacts
 /.elixir_ls/
+
+# Generierter Bericht
+Bericht.pdf

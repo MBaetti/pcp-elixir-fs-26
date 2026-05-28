@@ -1,7 +1,9 @@
 # Elixir – Team Bericht
 
 **Autoren:** Maurice Bättig & Mathias Vogel 
+
 **Modul:** PCP – Programmierkonzepte und Paradigmen  
+
 **Datum:** Mai 2026  
 
 ---
@@ -31,7 +33,7 @@ Elixir wird heute von namhaften Unternehmen produktiv eingesetzt:
 - **Pinterest** – Backend-Services für Push Notifications und Echtzeit-Analytics
 
 ---
-## 2. Interessant anderst
+## 2. Interessant anders
 
 ### Typvergleiche
 In Elixir können verschiedene Datentypen direkt miteinander verglichen werden. Dafür gibt es eine globale Sortierreihenfolge:
@@ -124,14 +126,32 @@ send(pid, {:hello, "World"})
 
 **Monitor** – beobachtet einen Prozess unidirektional. Stirbt der beobachtete Prozess, erhält der Monitor eine Nachricht und läuft weiter.
 
-
-
-
 ### 3.3 OTP Supervisors
+
+Ein Kernkonzept zur Fehlerbehandlung nach der «Let it crash»-Philosophie. Anstatt Fehler defensiv abzufangen, lässt man fehlerhafte Prozesse sofort abstürzen. Ein übergeordneter Überwachungsprozess (Supervisor) registriert diesen Ausfall und startet den betroffenen Worker automatisch in einem sauberen Ausgangszustand neu. Im Gegensatz zu Java, wo eine Exception in einem Thread die gesamte Applikation zum Abstürzen bringen kann, bleiben Elixir-Systeme dadurch dauerhaft stabil.
+
+Mögliche Neustart-Strategien:
+- :one_for_one: Nur der spezifisch abgestürzte Worker wird neu gestartet.
+- :one_for_all: Alle vom betroffenen Supervisor verwalteten Prozesse werden neu gestartet.
+- :rest_for_one: Der abgestürzte Worker sowie alle in der Startreihenfolge nachfolgenden Prozesse werden neu gestartet.
+
+Quellcode-Referenz: Skript lib/supervisors.ex, mit Beispiel basierend auf der 3. Aufgabe aus Modern Java in SW 11.
 
 ### 3.4 Metaprogramming – Macros & Quotes
 
----
+Metaprogrammierung beschreibt den Mechanismus, bei dem Quellcode in seinen abstrakten Syntaxbaum umgewandelt wird. Dies erlaubt es, Code bereits zur Kompilierzeit programmatisch zu verändern oder die Sprache selbst zu erweitern.
+
+Die Kernwerkzeuge:
+- quote – Nimmt Elixir-Code entgegen und gibt dessen Struktur (bestehend aus Operator, Metadaten und Funktionsargumenten) zurück, ohne ihn dabei auszuführen.
+- unquote – Wird innerhalb von quote verwendet, um Werte dynamisch einzufügen und diese bereits zur Compilezeit auszuwerten.
+
+Macros:
+Macros kombinieren diese Konstrukte und werden vor allem eingesetzt für:
+- Spracherweiterungen und die Entwicklung eigener Domain Specific Languages (DSLs).
+- Das Auslagern von aufwendigen Berechnungen in die Compile-Zeit zur Leistungsoptimierung.
+- Lazy Evaluation (z. B. das Auswerten eines übergebenen Code-Blocks nur dann, wenn eine bestimmte Bedingung zutrifft).
+
+Quellcode-Referenz: Skript lib/metaprogramming.exs
 
 ## 4. Technisches Team-Fazit
 
@@ -152,7 +172,8 @@ send(pid, {:hello, "World"})
 
 ### Maurice Bättig
 
-...
+- Ausführen von Code nicht so simple wie bei Clojure
+- Supervisor als cooles Feature, jedoch komplex und mit viel Konfigurationsaufwand
 
 ### Mathias Vogel
 
