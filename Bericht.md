@@ -4,9 +4,7 @@
 - **Modul:** PCP – Programmierkonzepte und Paradigmen  
 - **Datum:** Mai 2026  
 
-## 1. Einleitung
-
-### 1.1 Was ist Elixir?
+## 1. Was ist Elixir?
 
 Elixir ist eine Programmiersprache mit folgenden Eigenschaften:
 - **Funktional:** Code wird durch Funktionen strukturiert
@@ -16,70 +14,42 @@ Elixir ist eine Programmiersprache mit folgenden Eigenschaften:
 - **Pattern Matching:** Mächtiges Werkzeug statt if/else Ketten
 - **Actor Model:** Concurrency ohne shared state
 
-### 1.2 Geschichte & Vision
-
-Elixir wurde 2012 von José Valim entwickelt, einem bekannten Ruby-on-Rails-Core-Contributor. Sein Ziel war es, die Eleganz und Produktivität von Ruby mit der bewährten Nebenläufigkeitsinfrastruktur der Erlang VM (BEAM) zu kombinieren. Der Hauptgrund: Ruby leidet unter dem Global Interpreter Lock (GIL), der echte Parallelität auf Multicore-Systemen verhindert. Elixir löst dieses Problem, ohne auf Entwicklerfreundlichkeit zu verzichten.
-
-### 1.3 Verbreitung
+Elixir wurde 2012 von José Valim entwickelt. Sein Ziel war es, die Eleganz und Produktivität von Ruby mit der bewährten Nebenläufigkeitsinfrastruktur der Erlang VM (BEAM) zu kombinieren. Der Hauptgrund war, dass Ruby unter dem Global Interpreter Lock (GIL) leidet, der echte Parallelität auf Multicore-Systemen verhindert. Elixir löst dieses Problem, ohne auf Entwicklerfreundlichkeit zu verzichten.
 
 Elixir wird heute von namhaften Unternehmen produktiv eingesetzt:
 - **Discord:** Chat-Infrastruktur für über 100 Millionen Nutzer
 - **Pinterest:** Backend-Services für Push Notifications und Echtzeit-Analytics
 
-## 2. Interessant anders
-
-### 2.1 Typvergleiche
-
-In Elixir können verschiedene Datentypen direkt miteinander verglichen werden. Dafür gibt es eine globale Sortierreihenfolge:
-```elixir
-number < atom < tuple < map < list < bitstring
-"25" > 23    # => true
-```
-
-### 2.2 Enum
-
-In Elixir ist `Enum` ein Modul mit Funktionen zum Verarbeiten von Collections:
-```elixir
-Enum.map([1, 2, 3], fn x -> x * 2 end)    # => [2, 4, 6]
-Enum.filter([1, 2, 3], fn x -> x > 1 end) # => [2, 3]
-```
-
 ## 3. Fokuspunkte
 
 ### 3.1 Comprehensions & Pipe-Operator
 
-Comprehensions sind ein Sprachkonstrukt zum Filtern und Transformieren von Collections. Eine Comprehension besteht aus drei Teilen: `for [GENERATOR], [FILTERS], do: [TRANSFORMATION]`
-```elixir
-for x <- [1, 2, 3], x > 2, do: x * 2
-# [6]
-```
+- **Quellcode-Referenz:** lib/comprehensions.exs, Beispiele anhand des Demo-Codes SW09 Java: Lambda-Beispiel
+
+Comprehensions sind ein Sprachkonstrukt zum Filtern und Transformieren von Collections. Eine Comprehension besteht aus drei Teilen: 
+
+`for [GENERATOR], [FILTERS], do: [TRANSFORMATION]`
+
+`for x <- [1, 2, 3], x > 2, do: x * 2`
 
 #### 3.1.1 Generator
 
-Definiert die Collection über die iteriert wird:
-```elixir
-for x <- [1, 2, 3]
-```
+Definiert die Collection über die iteriert wird: 
+`for x <- [1, 2, 3]`
 
 #### 3.1.2 Filter-Klauseln (optional)
 
 Definiert Bedingungen für Elemente:
-```elixir
-x > 2
-```
+`x > 2`
 
 #### 3.1.3 do / Transformation
 
 Definiert was mit jedem Element gemacht wird:
-```elixir
-do: x * 2
-```
+`do: x * 2`
 
 Standardmässig gibt eine Comprehension immer eine Liste zurück. Mit `:into` kann das Ergebnis direkt in eine andere Datenstruktur gesammelt werden:
-```elixir
-numberResult = for x <- [1, 2, 2, 3, 3], into: MapSet.new(), do: x
-# MapSet.new([1, 2, 3])
-```
+
+`numberResult = for x <- [1, 2, 2, 3, 3], into: MapSet.new(), do: x`
 
 #### 3.1.4 Pipe-Operator
 
@@ -94,6 +64,9 @@ String.upcase(String.trim("  hello world  "))
 ```
 
 ### 3.2 Concurrency – The Actor Model
+
+- **Quellcode-Referenz:** lib/concurrency.exs, Beispiel anhand des Demo-Codes SW09 Java: CompletableFuture "in Action"
+
 Das Actor Model ist das zentrale Concurrency-Paradigma in Elixir. Jeder Prozess ist ein unabhängiger Actor mit:
 - **eigenem State:** Niemand anderes kann ihn direkt lesen/ändern
 - **einer Mailbox:** Warteschlange für eingehende Messages
@@ -119,6 +92,8 @@ send(pid, {:hello, "World"})
 
 ### 3.3 OTP Supervisors
 
+- **Quellcode-Referenz:** lib/supervisors.ex, mit Beispiel basierend auf der 3. Aufgabe aus Modern Java in SW 11.
+
 Ein Kernkonzept zur Fehlerbehandlung nach der «Let it crash»-Philosophie. Anstatt Fehler defensiv abzufangen, lässt man fehlerhafte Prozesse sofort abstürzen. Ein übergeordneter Überwachungsprozess (Supervisor) registriert diesen Ausfall und startet den betroffenen Worker automatisch in einem sauberen Ausgangszustand neu. Im Gegensatz zu Java, wo eine Exception in einem Thread die gesamte Applikation zum Abstürzen bringen kann, bleiben Elixir-Systeme dadurch dauerhaft stabil.
 
 #### 3.3.1 Neustart-Strategien
@@ -127,16 +102,14 @@ Ein Kernkonzept zur Fehlerbehandlung nach der «Let it crash»-Philosophie. Anst
 - **one_for_all:** Alle vom betroffenen Supervisor verwalteten Prozesse werden neu gestartet.
 - **rest_for_one:** Der abgestürzte Worker sowie alle in der Startreihenfolge nachfolgenden Prozesse werden neu gestartet.
 
-#### 3.3.2 Quellcode-Referenz
-
-- Skript lib/supervisors.ex
-- Mit Beispiel basierend auf der 3. Aufgabe aus Modern Java in SW 11.
-
 ### 3.4 Metaprogramming – Macros & Quotes
+
+- **Quellcode-Referenz:** lib/metaprogramming.exs
 
 Metaprogrammierung beschreibt den Mechanismus, bei dem Quellcode in seinen abstrakten Syntaxbaum umgewandelt wird. Dies erlaubt es, Code bereits zur Kompilierzeit programmatisch zu verändern oder die Sprache selbst zu erweitern.
 
 #### 3.4.1 Kernkonstrukte
+
 - **quote:** Nimmt Elixir-Code entgegen und gibt dessen Struktur (bestehend aus Operator, Metadaten und Funktionsargumenten) zurück, ohne ihn dabei auszuführen.
 - **unquote:** Wird innerhalb von quote verwendet, um Werte dynamisch einzufügen und diese bereits zur Compilezeit auszuwerten.
 
@@ -147,42 +120,36 @@ Macros kombinieren diese Konstrukte und werden vor allem eingesetzt für:
 - Das Auslagern von aufwendigen Berechnungen in die Compile-Zeit zur Leistungsoptimierung.
 - Lazy Evaluation (z. B. das Auswerten eines übergebenen Code-Blocks nur dann, wenn eine bestimmte Bedingung zutrifft).
 
-#### 3.4.3 Quellcode-Referenz
-- Skript lib/metaprogramming.exs
-
 ## 4. Technisches Team-Fazit
 
-### 4.1 Stärken
+\+ Concurrency ohne Locks – eleganter als Java Threads </br>
+\+ Pipe-Operator und Comprehensions → sehr lesbarer Code</br>
+\+ «Let it crash» ist ein radikaler aber effektiver Paradigmenwechsel
 
-- Concurrency ohne Locks – eleganter als Java Threads
-- Pipe-Operator und Comprehensions → sehr lesbarer Code
-- «Let it crash» ist ein radikaler aber effektiver Paradigmenwechsel
-
-### 4.2 Schwächen
-
-- Steile Lernkurve (funktional + OTP-Konzepte)
-- Dynamische Typen – kein Compile-Time Type Safety
-- Kleineres Ökosystem als Java
+\- Steile Lernkurve (funktional + OTP-Konzepte) </br>
+\- Dynamische Typen – kein Compile-Time Type Safety </br>
+\- Kleineres Ökosystem als Java
 
 ## 5. Persönliches Fazit
 
 ### 5.1 Maurice Bättig
+
+
 
 - Ausführen von Code nicht so simple wie bei Clojure
 - Supervisor als cooles Feature, jedoch komplex und mit viel Konfigurationsaufwand
 
 ### 5.2 Mathias Vogel
 
-Ich finde Elixir eine sehr interessante Sprache. Besonders beeindruckend ist die Möglichkeit, tausende von Prozessen parallel laufen zu lassen, ohne dabei an Performance zu verlieren. Die Art wie Concurrency implementiert wurde gefällt mir sehr, da jeder Prozess unabhängig von den anderen läuft und der Code dadurch übersichtlich und sicher bleibt.
-
-Auch der Pipe-Operator hat mich überzeugt. Ähnlich wie Java Streams ermöglicht er es, Folgeoperationen sauber und lesbar darzustellen.
+Ich finde Elixir eine sehr interessante Sprache. Die Art wie Concurrency implementiert wurde gefällt mir sehr, da jeder Prozess unabhängig von den anderen läuft und der Code dadurch übersichtlich und sicher bleibt. Auch der Pipe-Operator hat mich überzeugt. Ähnlich wie Java Streams ermöglicht er es, Folgeoperationen sauber und lesbar darzustellen.
 
 Was mich weniger überzeugt hat, ist die Möglichkeit verschiedene Typen direkt miteinander zu vergleichen. Es ist mir nicht ganz klar wo man das sinnvoll einsetzen würde, trotzdem muss man es kennen um fremden Code verstehen zu können.
 
-Insgesamt finde ich Elixir eine ansprechende Sprache. Ein abschliessendes Fazit ist jedoch schwierig zu ziehen, da wir hauptsächlich kurze, unabhängige Scripts programmiert haben. Wie sich die Sprache in einem grösseren Projekt anfühlt, bleibt offen.
+Ein abschliessendes Fazit ist jedoch schwierig zu ziehen, da wir hauptsächlich kurze, unabhängige Scripts programmiert haben. Wie sich die Sprache in einem grösseren Projekt anfühlt, bleibt offen.
 
 ## 6. Quellen
 
-- Elixir Official Documentation: https://elixir-lang.org/docs.html
-- Elixir School: https://elixirschool.com
-- Discord Engineering Blog: https://elixir-lang.org/blog/2020/10/08/real-time-communication-at-scale-with-elixir-at-discord/
+- Elixir Official Documentation (The Elixir Team, 2026): https://elixir-lang.org/docs.html
+- Elixir School (Sean Callan, 2021): https://elixirschool.com
+- Discord Engineering Blog (José Valim, 01.08.2020): https://elixir-lang.org/blog/2020/10/08/real-time-communication-at-scale-with-elixir-at-discord/
+- Paraxial Blog (Michael Lubas, 28.08.2023): https://paraxial.io/blog/elixir-savings
