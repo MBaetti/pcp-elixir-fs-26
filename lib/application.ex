@@ -6,14 +6,14 @@ defmodule PcpElixir.Application do
 
   @impl true
   def start(_type, _args) do
-    # Sub-Prozesse registrieren, welche überwacht werden sollen
+    # Sub-Prozesse registrieren
     children = [
       # Initialzustand [] definieren
       {PcpElixir.Supervisor, []},
       {PcpElixir.APISupervisor, []}
     ]
 
-    # Root-Supervisor und definierte Sub-Prozesse darunter starten
+    # Konfiguration an das OTP-Framework übergeben (Open Telecom Platform/Framework)
     opts = [strategy: :one_for_one]
     Supervisor.start_link(children, opts)
   end
