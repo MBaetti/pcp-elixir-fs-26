@@ -156,7 +156,14 @@ send(pid, {:hello, "World"})
 
 ### Mathias Vogel
 
-...
+Ich finde Elixir eine sehr interessante Sprache. Besonders beeindruckend ist die Möglichkeit, tausende von Prozessen parallel laufen zu lassen, ohne dabei an Performance zu verlieren. Die Art wie Concurrency implementiert wurde gefällt mir sehr, da jeder Prozess unabhängig von den anderen läuft und der Code dadurch übersichtlich und sicher bleibt.
+
+Auch der Pipe-Operator hat mich überzeugt. Ähnlich wie Java Streams ermöglicht er es, Folgeoperationen sauber und lesbar darzustellen.
+
+Was mich weniger überzeugt hat, ist die Möglichkeit verschiedene Typen direkt miteinander zu vergleichen. Es ist mir nicht ganz klar wo man das sinnvoll einsetzen würde, trotzdem muss man es kennen um fremden Code verstehen zu können.
+
+Insgesamt finde ich Elixir eine ansprechende Sprache. Ein abschliessendes Fazit ist jedoch schwierig zu ziehen, da wir hauptsächlich kurze, unabhängige Scripts programmiert haben. Wie sich die Sprache in einem grösseren Projekt anfühlt, bleibt offen.
+
 
 ---
 
