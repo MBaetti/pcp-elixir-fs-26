@@ -1,6 +1,6 @@
 # Metaprogrammierung in Elixir
 # Skript ausführen: elixir metaprogramming.exs
-# Interaktive Shell starten: iex.bat -S mix
+# Interaktive Shell starten: iex.bat
 # File in die Shell laden: import_file("./lib/metaprogramming.exs")
 
 # - Praesentation -

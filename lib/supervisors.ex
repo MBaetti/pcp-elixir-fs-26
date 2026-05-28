@@ -1,5 +1,5 @@
 # Supervisors
-# Interaktive Shell starten: iex.bat -S mix
+# Applikation starten: iex.bat -S mix
 
 # - Praesentation -
 

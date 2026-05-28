@@ -1,6 +1,5 @@
 # Beispiel für eine Elixir-Quelldatei
-# Datei kompilieren: mix compile
-# Interaktive Shell starten: iex.bat -S mix
+# Applikation starten: iex.bat -S mix
 # Hello hello() im Modul Compile aufrufen: Compile.hello()
 
 defmodule Compile do
