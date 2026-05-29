@@ -3,6 +3,8 @@
 # Interaktive Shell starten: iex.bat
 # File in die Shell laden: import_file("./lib/comprehensions.exs")
 
+# Beispiele anhand des Demo-Codes SW09 Java: Lambda-Beispiel
+
 # Liste mit Namen
 names = ["Joe", "Tara", "Sue", "Tim"]
 

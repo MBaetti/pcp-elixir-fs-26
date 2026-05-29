@@ -3,11 +3,13 @@
 # Interaktive Shell starten: iex.bat
 # File in die Shell laden: import_file("./lib/concurrency.exs")
 
+# Beispiel anhand des Demo-Codes SW09 Java: CompletableFuture "in Action"
+
 defmodule Demo do
   def run do
     main = self()
 
-    # Task 3
+    # Process 3
     pid3 =
       spawn(fn ->
         receive do
@@ -18,7 +20,7 @@ defmodule Demo do
         end
       end)
 
-    # Task 2 braucht pid3
+    # Process 2 braucht pid3
     pid2 =
       spawn(fn ->
         receive do
@@ -29,7 +31,7 @@ defmodule Demo do
         end
       end)
 
-    # Task 1 braucht pid2
+    # Process 1 braucht pid2
     spawn(fn ->
       :timer.sleep(3000)
       IO.write("1")
